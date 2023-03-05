@@ -1,0 +1,40 @@
+.menu{
+    width: auto;
+    text-align: center;
+}
+.menu li{
+    display:inline;
+    margin: 10px;
+    padding: 5px;
+    font-size: 20px;
+    color: rgb(83, 137, 184);
+}
+
+header{
+  text-align: center;
+}
+
+section{
+  width: 98vw;
+  height: 30vh;
+  background-color: aquamarine;
+  display: flex; /*Mette il contenuto tutto inline anzichè block.. che li farebbe andare a capo*/
+  justify-content: space-around;
+}
+
+.content{
+  background-color: rgb(83, 137, 184);
+  margin: 30px;
+  padding: 10px;
+  color: rgb(208, 208, 208);
+  font-size: 20px;
+  text-align: center;
+}
+
+.output{
+  margin: 30px;
+  padding: 10px;
+  color: rgb(83, 137, 184);
+  font-size: 20px;
+  text-align: center;
+}

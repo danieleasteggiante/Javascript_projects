@@ -1,0 +1,44 @@
+body{
+    background-color: aliceblue;
+}
+section{
+    width: 98vw;
+    height: 30vh;
+    background-color: aquamarine;
+    display: flex; /*Mette il contenuto tutto inline anzichè block.. che li farebbe andare a capo*/
+    justify-content: space-around;
+}
+header{
+    text-align: center;
+}
+
+.sendWord{
+    background-color: rgb(83, 137, 184);
+    margin: 30px;
+    padding: 10px;
+    color: rgb(208, 208, 208);
+    font-size: 80px;
+    text-align: center;
+}
+
+.letter{
+    width: 10vw;
+    height: 10vw; /* Dovrebbe essere vh ma lo teniamo vw per tenere la stessa dimensione dell'altro cosi risulteranno quadrati*/
+    background-color: rgb(83, 137, 184);
+    margin-top: 30px;
+    color: rgb(208, 208, 208);
+    font-size: 80px;
+    text-align: center;
+    line-height: 20vh; /* finge un centramento verticale aumentando la dimensione dell'interlinea*/
+}
+
+.letterOK{
+    width: 10vw;
+    height: 10vw; /* Dovrebbe essere vh ma lo teniamo vw per tenere la stessa dimensione dell'altro cosi risulteranno quadrati*/
+    background-color: rgb(196, 57, 111);
+    margin-top: 30px;
+    color: rgb(208, 208, 208);
+    font-size: 80px;
+    text-align: center;
+    line-height: 20vh; /* finge un centramento verticale aumentando la dimensione dell'interlinea*/
+}
