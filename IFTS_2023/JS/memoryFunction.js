@@ -16,25 +16,17 @@ start.addEventListener("click", () =>{
     let numberInput = parseInt(document.getElementById("cards-number").value); //recupero il valore dell'input
     immagini = []; // dichiaro vuoto l'array originale
     immagini2 = []; // dichiaro vuoto l'array copia
-   
     //se il numero non è multiplo di 4 o è maggiore di tutte le immagini disponibili dichiaro errore
     if((numberInput%4 != 0) || (numberInput > img.length)){ 
         alert("numero sbagliato"); 
         return;
     } 
-    
     // se è multiplo di 4 e inferiore o uguale al numero totale di immagini inizio
     if((numberInput%4 === 0) && (numberInput <= img.length)){
         CARDS_NUMBER = numberInput; // setto la variabile di gioco CARDS NUMBER
         immagini = img.splice(0,CARDS_NUMBER/2); // divido l array di immagini totale in 2
-        
-        //creo un array di copia e aggiungo 2 all'identificativo
-        immagini.forEach(element=>{
-           let elTmp = {id: element.id + "2", icon:element.icon}
-           immagini2.push(elTmp);
-        });
 
-        immagini = immagini.concat(immagini2); //unisco i 2 array in uno unico cosi ho elemento e elemento2
+        immagini = immagini.concat(immagini); //raddoppio le immagini cosi ho immagine e copia
         immaginiOnCard = [...immagini]; //copio l array in un altro di riserva
         createGraphics(); //chiamo la funzione crea grafica
     }
@@ -55,9 +47,12 @@ function getCard(){
         if (cardTmp!== undefined){//se la carta tmp non è undefined
             let cardImagePrev  = immaginiOnCard.filter(element => element.id === cardTmp.getAttribute("card"))[0]; //inizializzo una variabile che mi prende l'immagine dall'array di controllo
             
-            //se l attributo card della carta attuale eliminando il 2 finale se c'è è uguale all'attributo card della carta precedente
-            if(((thiscard.getAttribute("card").replace("2","")) === cardTmp.getAttribute("card").replace("2","")) 
-            &&(thiscard.getAttribute("card")!==(cardTmp.getAttribute("card")))) {
+            let controlAttCard = thiscard.getAttribute("card") === cardTmp.getAttribute("card"); //se l attributo card della carta attuale eliminando il 2 finale se c'è è uguale all'attributo card della carta precedente
+            let controlId = thiscard.id !== cardTmp.id; //se l'id è diverso, cosi se uno clicca la stessa foto 2 volte non prende il valore corretto
+
+            let totalControl = controlAttCard && controlId; //tengo valore di ritorno in una variabile booleana
+            
+            if(totalControl){
                 punteggio++;//punteggio aumenta
                 punteggioLabel.innerText = punteggio;//scrivo il punteggio
                 
@@ -88,7 +83,6 @@ function getCard(){
     }
 }
 
-
 function hideCallback(){
     for (const child of cardsContainer.children){
         child.innerHTML = cardsImgDefault; // nascondo
@@ -105,7 +99,7 @@ function createGraphics() {
     //creo il contenuto (carte)
     for(let i=0; i < CARDS_NUMBER; i++){
         let div = document.createElement("div"); //prima i div
-        //div.setAttribute("id","card" + i); //poi do un id progressivo non dovrebbe servire ma per sicurezza
+        div.setAttribute("id","card" + i); //poi do un id progressivo per controllo incrociato successivo
         div.setAttribute("class","discovered"); //aggiungo la classe default che intende le carte "girate"
 
         let randNr = parseInt(Math.random()*immagini.length); //inizializzo un numero casuale 
@@ -118,5 +112,6 @@ function createGraphics() {
         div.addEventListener("click", getCard); //attacco un listener per far "girare la carta"
         cardsContainer.appendChild(div);
     }
+    
     setTimeout(hideCallback,5000); // nascondo le immagini dopo 5 secondi
 }
