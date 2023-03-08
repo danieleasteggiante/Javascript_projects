@@ -100,11 +100,12 @@ function createGraphics() {
     [...cardsContainer.children].forEach(c => c.remove()); //elimino tutto quello che c'è
     punteggio = 0; //inizializzo il punteggio a zero
     punteggioLabel.innerText = punteggio; //scrivo il punteggio
+    cardTmp = undefined;
 
     //creo il contenuto (carte)
     for(let i=0; i < CARDS_NUMBER; i++){
         let div = document.createElement("div"); //prima i div
-        div.setAttribute("id","card" + i); //poi do un id progressivo non dovrebbe servire ma per sicurezza
+        //div.setAttribute("id","card" + i); //poi do un id progressivo non dovrebbe servire ma per sicurezza
         div.setAttribute("class","discovered"); //aggiungo la classe default che intende le carte "girate"
 
         let randNr = parseInt(Math.random()*immagini.length); //inizializzo un numero casuale 
