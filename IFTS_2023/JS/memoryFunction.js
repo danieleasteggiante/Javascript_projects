@@ -48,7 +48,6 @@ function getCard(){
 
     let cardImage  = immaginiOnCard.filter(element => element.id === thiscard.getAttribute("card"))[0]; //filtro per attributo card
     thiscard.innerHTML = cardImage.icon; // carico l'immagine recuperata dall'attributo card
-    
     setTimeout(cardCallback,500) //setto timeout di un secondo
     
     //funzione di callback del timeout
@@ -57,7 +56,8 @@ function getCard(){
             let cardImagePrev  = immaginiOnCard.filter(element => element.id === cardTmp.getAttribute("card"))[0]; //inizializzo una variabile che mi prende l'immagine dall'array di controllo
             
             //se l attributo card della carta attuale eliminando il 2 finale se c'è è uguale all'attributo card della carta precedente
-            if((thiscard.getAttribute("card").replace("2","")) === cardTmp.getAttribute("card").replace("2","")) {
+            if(((thiscard.getAttribute("card").replace("2","")) === cardTmp.getAttribute("card").replace("2","")) 
+            &&(thiscard.getAttribute("card")!==(cardTmp.getAttribute("card")))) {
                 punteggio++;//punteggio aumenta
                 punteggioLabel.innerText = punteggio;//scrivo il punteggio
                 
