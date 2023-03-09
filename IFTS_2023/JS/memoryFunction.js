@@ -10,6 +10,8 @@ let immagini2; //immagini copia
 let immaginiOnCard = []; //array di controllo
 let cardsImgDefault = '<i class="fa fa-question-circle fa-5x"></i>'; // immagine di default
 let punteggio = 0; // setto il punteggio a zero
+let cardTmp = undefined; // inizializzo la variabile carta tmp (o carta precedente)
+
 
 //aggiungo il listener al bottone con le funzioni di gioco
 start.addEventListener("click", () =>{
@@ -32,15 +34,14 @@ start.addEventListener("click", () =>{
     }
 })
 
-let cardTmp = undefined; // inizializzo la variabile carta tmp (o carta precedente)
-
 
 function getCard(){
     let thiscard = this; //inizializzo la variabile carta attuale
 
     let cardImage  = immaginiOnCard.filter(element => element.id === thiscard.getAttribute("card"))[0]; //filtro per attributo card
     thiscard.innerHTML = cardImage.icon; // carico l'immagine recuperata dall'attributo card
-    setTimeout(cardCallback,500) //setto timeout di un secondo
+    
+    setTimeout(cardCallback,1000) //setto timeout di un secondo
     
     //funzione di callback del timeout
     function cardCallback(){  
@@ -113,5 +114,5 @@ function createGraphics() {
         cardsContainer.appendChild(div);
     }
     
-    setTimeout(hideCallback,5000); // nascondo le immagini dopo 5 secondi
+    setTimeout(hideCallback,4000); // nascondo le immagini dopo 5 secondi
 }
