@@ -16,7 +16,7 @@ class Player {
     move(dadoNumber){
         let actualNr = this.position + dadoNumber;
         let intervalId = setInterval(()=>{
-            if (this.position >= actualNr) clearInterval(intervalId);
+            if (this.position >= actualNr-1) clearInterval(intervalId);
             let oldPosition = document.getElementById(this.name);
             oldPosition.remove();
             this.changePosition(1);
@@ -34,7 +34,7 @@ class Player {
     }
 
     checkVictory(){
-        if((this.position + dadoNumber) >= ((nrRow*2 + nrCol*2)-1)){
+        if((this.position + dadoNumber) >= (nrRow*2 + nrCol*2)){
             alert(this.name + " hai vinto!");
             location.reload()
         } 
@@ -102,13 +102,9 @@ function rollDice(){
             
         players[choosePlayer].checkVictory();
         players[choosePlayer].move(dadoNumber);
+        console.log(players[choosePlayer].position + dadoNumber)
         choosePlayer == 0 ? choosePlayer = 1 : choosePlayer = 0; 
     })
 }
 
 btLanciaDado.addEventListener("click", rollDice);
-
-
-
-
-
