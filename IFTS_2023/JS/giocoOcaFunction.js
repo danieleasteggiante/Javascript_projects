@@ -12,6 +12,33 @@ class Player {
     changePosition(number, direction="+"){
         direction == "+" ? this.position+=number : this.position-=number;
     }
+
+    move(dadoNumber){
+        let actualNr = this.position + dadoNumber;
+        let intervalId = setInterval(()=>{
+            if (this.position >= actualNr) clearInterval(intervalId);
+            let oldPosition = document.getElementById(this.name);
+            oldPosition.remove();
+            this.changePosition(1);
+            this.render();
+        },200);
+    }
+    
+    render(){
+        let position = document.getElementById("number" + this.position);
+        let pedina = document.createElement("div");
+        pedina.setAttribute("class","pedinaClass");
+        pedina.setAttribute("id", this.name)
+        pedina.style.backgroundColor = this.color;
+        position.appendChild(pedina);
+    }
+
+    checkVictory(){
+        if((this.position + dadoNumber) >= ((nrRow*2 + nrCol*2)-1)){
+            alert(this.name + " hai vinto!");
+            location.reload()
+        } 
+    }
 }
 
 function createCaselleList(nr=10, parent, classType, arrivo, andamento ="c"){
@@ -45,8 +72,14 @@ createCaselleList(nrCol, colLeft,"caselleColLeft", nrRow*2 + nrCol*2,"d");
 
 let dadoDiv = document.getElementById("dado");
 let btLanciaDado = document.getElementById("lanciaDado");
-let player = new Player(0, "blue", "Daniele");
-render();
+let player1 = new Player(0, "blue", "Daniele");
+let player2 = new Player(0, "red", "Aste");
+let players = [player1,player2];
+let choosePlayer = 0;
+
+player1.render();
+player2.render();
+
 
 function rollDice(){
     let counter = 0;
@@ -66,38 +99,16 @@ function rollDice(){
     }
 
     startGame().then((dadoNumber)=>{
-        checkVictory();
-        move(dadoNumber);
-       
+            
+        players[choosePlayer].checkVictory();
+        players[choosePlayer].move(dadoNumber);
+        choosePlayer == 0 ? choosePlayer = 1 : choosePlayer = 0; 
     })
 }
 
 btLanciaDado.addEventListener("click", rollDice);
 
-function render(){
-    let position = document.getElementById("number" + player.position);
-    let pedina = document.createElement("div");
-    pedina.setAttribute("class","pedinaClass");
-    pedina.setAttribute("id", player.nome)
-    pedina.style.backgroundColor = player.color;
-    position.appendChild(pedina);
-}
 
-function move(dadoNumber){
-    let actualNr = player.position + dadoNumber;
-    let intervalId = setInterval(()=>{
-        if (player.position >= actualNr-1) clearInterval(intervalId);
-        let oldPosition = document.getElementById(player.id);
-        oldPosition.remove();
-        player.changePosition(1);
-        render();
-    },200);
-}
 
-function checkVictory(){
-    if((player.position + dadoNumber) >= (nrRow*2 + nrCol*2)){
-        alert(player.name + " hai vinto!");
-        location.reload()
-    } 
-}
+
 
