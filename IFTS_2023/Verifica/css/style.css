@@ -1,0 +1,201 @@
+
+:root{
+    --box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0.24);
+}
+
+header{
+    text-align: center;
+}
+
+body{
+    font-family: 'Quicksand', sans-serif;
+    
+}
+
+#menu{
+    width: auto;
+    height: auto;
+    background-color: rgb(60, 133, 236);
+    display: flex; /*Mette il contenuto tutto inline anzichè block.. che li farebbe andare a capo*/
+    justify-content: space-around;
+}
+
+#menu > ul > li{
+    display: inline;
+    padding: 20px;
+    color: white;
+}
+
+#menu > ul > li:hover{
+    display: inline;
+    padding: 20px;
+    color: rgb(6, 72, 195);
+    background-color: rgb(133, 185, 231);
+}
+
+#container{
+    background-color: #ffffff;
+    padding: 20px;
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    margin: 20px 0;
+    width: auto;
+    height: auto;
+    justify-content: center;
+}
+
+.row{
+    box-shadow: var(--box-shadow);
+    margin: 20px;
+    text-align: center;
+    flex-direction:row;
+    flex-wrap:wrap;
+    padding: 20px;
+    color: #ffffff;
+}
+
+#container div:nth-child(1){
+    background-color: rgb(7, 152, 22);
+}
+
+#container div:nth-child(2){
+    background-image: url("./../images/img1.png") ; 
+    height: 60vh;
+    background-size: cover;
+    padding: 0;
+}
+
+
+footer{
+    display: flex;
+    margin: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+.col{
+    box-shadow: var(--box-shadow);
+    width: 50vw;
+    margin: 20px;
+    text-align: center;
+    padding: 20px;
+    color: #7e7e7e;
+}
+
+.imgLeft{
+    width: 150px;
+    width: 20vw;
+    margin: 20px;
+}
+
+a{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.alignLeft{
+    text-align: left;
+}
+
+#game{
+
+    background-color: #3485c8;
+    padding: 20px;
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:column;
+    margin: 20px 0;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+}
+
+.btnClass{
+    padding: 20px;
+    width: 20vw;
+    text-align: center;
+    margin: auto;
+    box-shadow: var(--box-shadow);
+
+}
+
+#btnLingo{
+    background-color: #dd940e;
+    margin-bottom:10px ;
+
+
+}
+
+#btnLingo:hover{
+    cursor: pointer;
+    background-color: #815c16;
+}
+
+
+#btnVerifica{
+    background-color: #0edd61;
+    margin-top:10px ;
+
+}
+
+#btnVerifica:hover{
+    cursor: pointer;
+    background-color: #285b3c;
+}
+
+.riga{
+    text-align: center;
+    display:flex;
+    justify-content: center;
+
+}
+
+.casella{
+    background-color: #bed5e8;
+    padding: 10px;
+    margin: 10px;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 10px;
+}
+
+.ok{
+    background-color: #0edd61;
+    color: black;
+}
+
+.error{
+    background-color: #dd0ebe;
+
+}
+
+.quasi{
+    background-color: #dd870e;
+
+}
+
+.verifica{
+    background-color: #ffffff;
+    border-radius: 2px;
+}
+
+#verifica{
+    display:flex;
+    margin: auto;
+}
+
+input[type=text]{
+    width:2vw;
+    height: 3vw;
+    margin: auto;
+    font-size: 150%;
+    
+}
+
+*:focus {
+    outline: none;
+    box-shadow: none;
+}

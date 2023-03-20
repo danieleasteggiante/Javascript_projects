@@ -1,5 +1,5 @@
 let nrCasella = 0;
-let nrRow = 8;
+let nrRow = 14;
 let nrCol = 4;
 let dado = [1,2,3,4,5,6];
 
@@ -41,7 +41,7 @@ class Player {
     }
 }
 
-function createCaselleList(nr=10, parent, classType, arrivo, andamento ="c"){
+function createCaselleList(nr, parent, classType, arrivo, andamento ="c"){
     nrCasella = andamento == "c" ? nrCasella : arrivo-1;
     for(let i = 0; i< nr; i++){
         let casella = document.createElement("div");
@@ -98,8 +98,7 @@ function rollDice(){
             });
     }
 
-    startGame().then((dadoNumber)=>{
-            
+    startGame().then((dadoNumber)=>{     
         players[choosePlayer].checkVictory();
         players[choosePlayer].move(dadoNumber);
         console.log(players[choosePlayer].position + dadoNumber)
